@@ -1,0 +1,107 @@
+
+<div class="row">
+    <div class="col s10 marge">
+    
+      <div class="input-field col s10  offset-l2">
+        <input id="email_inline" type="email" [(ngModel)]="motcle" class="validate">
+        <label for="email_inline">Mot Cle :</label>
+        <button class="btn waves-effect waves-light" (click)="chercher()">Chercher
+        
+        </button>      </div>
+    </div>
+<div class="row">
+    <div class="col s6">
+  
+      <div class="row marge ">
+        <div class="col s12 m12 offset-l3">
+          <div class="card">
+            <div class="card-content blue">
+              <h5 class="brand">LISTE DES CLIENTS</h5>
+            </div>
+            <div class="card-action ">
+              <table class="striped s6">
+                <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>FIRSTNAME</th>
+                  <th>LASTNAME</th>
+                  <th>EMAIL</th>
+                  <th>PHONE NUMBER</th>
+                  <th>ACTION</th>
+                  <th>ACTION</th>
+                </tr>
+                </thead>
+      
+                <tbody class="striped">
+      
+                  <tr *ngFor='let c of clients'>
+                    <td>{{ c.idC }}</td>
+                    <td> {{ c.firstName }}</td>
+                    <td> {{ c.lastName }}</td>
+                    <td> {{ c.email }}</td> 
+                    <td> {{ c.phoneNumber }}</td>
+
+                    <td><a class="btn" >Modifier</a> </td>
+                    <td><a class="btn btn-danger" (click)="Ondelete(c.idC)">Supprimer</a> </td> 
+                  </tr>
+       
+      
+                </tbody> 
+      
+              </table>
+      
+              <a class="waves-effect btn-danger btn marge"  href="">ADD CLIENT</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col s6">
+      <div class="row marge ">
+      <div class="col s6 m6 offset-l3">
+        <div class="card">
+          
+          <div class="card-content blue">
+              <h5 class="brand"> Add Client</h5>
+          </div>
+          <div class="card-action">
+          <div class="row">
+            <form #cli ="ngForm" (ngSubmit) = "onClickSubmit(cli.value)" > 
+                <input type = "hidden" name="idC" #numero="ngModel"     ngModel > 
+  
+              <input type = "text" name="firstName" #firstname="ngModel"   placeholder = "firstname"  ngModel required> 
+              <!-- <div class="validation-error" *ngIf="cumul_ancien.invalid && cumul_ancien.touched">veuillez saisir le cumul ancien</div> -->
+              
+              <br/> 
+              <input type = "text"  #lastname="ngModel" name ="lastName" placeholder = "lastname" ngModel required> 
+              <!-- <div class="validation-error" *ngIf="cumul_nouveau.invalid && cumul_nouveau.touched">veuillez saisir le cumul ancien</div> -->
+  
+              <br/> 
+              <input type = "text"  #email="ngModel" name ="email" placeholder = "email" ngModel required> 
+              <!-- <div class="validation-error" *ngIf="cumul_nouveau.invalid && cumul_nouveau.touched">veuillez saisir le cumul ancien</div> -->
+  
+              <br/> 
+              <input type = "text"  #phonenumber="ngModel" name ="phoneNumber" placeholder = "phonenumber" ngModel required> 
+              <!-- <div class="validation-error" *ngIf="cumul_nouveau.invalid && cumul_nouveau.touched">veuillez saisir le cumul ancien</div> -->
+  
+              <br/> 
+              <input [disabled]="!cli.valid" class="waves-effect BLUE-light btn marge" type = "submit" value = "Add"> 
+            </form>
+      
+            
+      
+      </div>
+    </div>
+         
+          </div>
+        </div>
+      </div>
+      
+  
+    </div>
+    
+  </div>
+  
+ 
+  
+  

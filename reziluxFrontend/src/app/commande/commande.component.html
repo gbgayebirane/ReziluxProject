@@ -1,0 +1,130 @@
+<!-- 
+ <table class="striped s6">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>FIRSTNAME</th>
+      <th>LASTNAME</th>
+      <th>EMAIL</th>
+      <th>PHONE NUMBER</th>
+      <th>ACTION</th>
+      <th>ACTION</th>
+    </tr>
+    </thead>
+
+    <tbody class="striped">
+
+      <tr *ngFor='let c of clients'>
+        <td>{{ c.idC }}</td>
+        <td> {{ c.firstName }}</td>
+        <td> {{ c.lastName }}</td>
+        <td> {{ c.email }}</td> 
+        <td> {{ c.phoneNumber }}</td>
+
+        
+      </tr>
+
+
+    </tbody> 
+
+  </table> -->
+
+<div class="row">
+    <div class="col s6">
+  
+      <div class="row marge ">
+        <div class="col s12 m12 offset-l3">
+          <div class="card">
+            <div class="card-content blue">
+              <h5 class="brand">LISTE DES COMMANDES CLIENTS</h5>
+            </div>
+            <div class="card-action ">
+              <table class="striped s6">
+                <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>REFERENCE</th>
+                  <th>DATE</th>
+                  <th>STATUS</th>
+                  <!-- <th>CLIENT</th> -->
+                 
+                </tr>
+                </thead>
+      
+                <tbody class="striped">
+      
+                  <tr *ngFor='let c of commandes'>
+                    <td>{{ c.idC }}</td>
+                    <td> {{ c.ref }}</td>
+                    <td> {{ c.date }}</td>
+                    <td> {{ c.status }}</td> 
+
+                    <!-- <td><a class="btn" >Modifier</a> </td>
+                    <td><a class="btn btn-danger" >Supprimer</a> </td>  -->
+                  </tr> 
+       
+      
+                </tbody> 
+      
+              </table>
+      
+              <a class="waves-effect btn-danger btn marge"  href="">ADD COMMANDE</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col s6">
+      <div class="row marge ">
+      <div class="col s6 m6 offset-l3">
+        <div class="card">
+          
+          <div class="card-content blue">
+              <h5 class="brand"> Add Commande</h5>
+          </div>
+          <div class="card-action">
+            
+          <div class="row">
+            <form #com ="ngForm" (ngSubmit) = "onClickSubmit(com.value)"> 
+                <!--   -->
+                <input type = "hidden" name="idC" #numero="ngModel"     ngModel > 
+  
+              <input type = "text" name="ref" #ref="ngModel"   placeholder = "reference"  ngModel required> 
+  
+              <br/> 
+              <input type = "date"  #date="ngModel" name ="date" placeholder = "date" ngModel required> 
+  
+              <br/> 
+              <input type = "text"  #statut="ngModel" name ="statut" placeholder = "statut" ngModel required> 
+  
+              <br/> 
+<!--               <input type = "text"  #client="ngModel" name ="client" placeholder = "Clients" ngModel required> 
+ -->            <br/>
+              <div>
+                <label>Client</label>
+                    <select [(ngModel)]=clients [ngModelOptions]="{standalone: true}">
+                        <option>selectionnez client</option>
+                        <option *ngFor="let c of clients" [value]="c.idC" >{{c.nom}}</option>
+                    </select>
+                    
+               </div>
+               
+              <br/> 
+              <input [disabled]="!com.valid" class="waves-effect BLUE-light btn marge" type = "submit" value = "Add"> 
+            </form>
+      
+            
+      
+      </div>
+    </div>
+         
+          </div>
+        </div>
+      </div>
+      
+  
+    </div>
+    
+  </div>
+  
+  

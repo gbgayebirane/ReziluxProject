@@ -1,0 +1,92 @@
+<div class="row">
+    <div class="col s6">
+  
+      <div class="row marge ">
+        <div class="col s12 m12 offset-l3">
+          <div class="card">
+            <div class="card-content blue">
+              <h5 class="brand">LISTE DES ARTICLES</h5>
+            </div>
+            <div class="card-action ">
+              <table class="striped s6">
+                <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>NAME</th>
+                  <th>PRICE</th>
+                  <th>IMAGE</th>
+                
+                </tr>
+                </thead>
+      
+                <tbody class="striped">
+      
+                  <tr *ngFor='let a of articles'>
+                    <td>{{ a.idA }}</td>
+                    <td> {{ a.name }}</td>
+                    <td> {{ a.price }}</td>
+                    <td>
+                        
+                     <!-- <img  src="../images{{a.image}}" alt=""> -->
+                     <img width="30%" src="assets/images/{{a.image}}" />
+                        </td> 
+
+                    <!-- <td><a class="btn" >Modifier</a> </td>
+                    <td><a class="btn btn-danger" >Supprimer</a> </td>  -->
+                  </tr>
+       
+      
+                </tbody> 
+      
+              </table>
+      
+              <a class="waves-effect btn-danger btn marge"  href="">ADD Article</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col s6">
+      <div class="row marge ">
+      <div class="col s6 m6 offset-l3">
+        <div class="card">
+          
+          <div class="card-content blue">
+              <h5 class="brand"> Add Article</h5>
+          </div>
+          <div class="card-action">
+          <div class="row">
+            <form #article ="ngForm" (ngSubmit) = "onClickSubmit(article.value)" > 
+                <input type = "hidden" name="idA" #numero="ngModel"     ngModel > 
+  
+              <input type = "text" name="name" #name="ngModel"   placeholder = "name of article"  ngModel required> 
+  
+              <br/> 
+              <input type = "text"  #price="ngModel" name ="price" placeholder = "price of Article" ngModel required> 
+  
+              <br/> 
+              <br/> 
+              
+            <div class="col-md-6">
+                <input type="file" (change)="onFileChanged($event)">
+        
+            </div>
+              <br/> 
+  
+              
+              <input [disabled]="!article.valid" class="waves-effect BLUE-light btn marge" type = "submit" value = "Add"> 
+            </form>
+      
+            
+      
+      </div>
+    </div>
+         
+          </div>
+        </div>
+      </div>
+      
+  
+    </div>
+    
+  </div>

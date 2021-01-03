@@ -1,0 +1,51 @@
+
+    <div class="col s6">
+      <div class="row marge ">
+      <div class="col s6 m6 offset-l3">
+        <div class="card">
+          
+          <div class="card-content blue">
+              <h5 class="brand"> Add Detail Commande</h5>
+          </div>
+          <div class="card-action">
+            
+          <div class="row">
+            <form #detail ="ngForm" (ngSubmit) = "onClickSubmit(detail.value)"> 
+                <!--   -->
+                <input type = "hidden" name="id" #numero="ngModel"     ngModel > 
+  
+              <input type = "text" name="quantity" #quantity="ngModel"   placeholder = "Quantity"  ngModel required> 
+  
+              <br/> 
+              
+              <input type = "text"  #price="ngModel" name ="price" placeholder = "price" ngModel required> 
+  
+              <br/> 
+              <label>Commande</label>
+              <select [(ngModel)]=commandes [ngModelOptions]="{standalone: true}">
+                  <option>selectionnez commande</option>
+                  <option *ngFor="let c of commandes" [value]="c.idC" >{{c.ref}}</option>
+              </select>
+              
+                <br/>
+                <br/>
+                <label>Article</label>
+                <select [(ngModel)]=articles [ngModelOptions]="{standalone: true}">
+                    <option>selectionnez article</option>
+                    <option *ngFor="let a of articles" [value]="a.idA" >{{a.name}}</option>
+                </select>
+                
+                <br/> 
+               
+              <br/> 
+              <input [disabled]="!detail.valid" class="waves-effect BLUE-light btn marge" type = "submit" value = "Add"> 
+            </form>
+      
+            
+      
+      </div>
+    </div>
+         
+        
+  
+  
